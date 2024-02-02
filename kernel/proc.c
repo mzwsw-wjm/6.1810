@@ -689,3 +689,13 @@ procdump(void)
     printf("\n");
   }
 }
+
+int             
+not_unused_proc_num(void)
+{
+  int n = 0;
+  for(struct proc *p = proc; p <= &proc[NPROC]; p++) {
+    if(p->state != UNUSED) { n++; }
+  }
+  return n;
+}
