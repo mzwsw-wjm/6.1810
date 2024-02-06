@@ -104,4 +104,15 @@ struct proc {
   struct file *ofile[NOFILE];  // Open files
   struct inode *cwd;           // Current directory
   char name[16];               // Process name (debugging)
+
+  //the virtual address of alarm handler in user page
+  uint64 handler_va;
+  int alarm_interval;
+  int passed_ticks;
+
+  //save registers for restoring it when coming back fron the handler
+  struct trapframe saved_trapframe;
+
+  //whether we have come back or not
+  int have_return;
 };
